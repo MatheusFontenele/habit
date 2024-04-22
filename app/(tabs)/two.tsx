@@ -14,12 +14,12 @@ const fakeHabits = [
 
 export default function TabTwoScreen() {
   return (
-    <SafeAreaView className='flex-1'>
+    <SafeAreaView className='flex-1 pt-2'>
       <View className='px-4 py-2 flex-row justify-between items-center'>
-        <Text className='text-2xl font-semibold'>Hábitos</Text>
+        <Text className='text-2xl text-white font-semibold'>Hábitos</Text>
         <View className='flex-row justify-between items-center gap-2'>
-          <Feather name='search' size={24} color='black' />
-          <Feather name='plus-circle' size={24} color='black' />
+          <Feather name='search' size={24} color='white' />
+          <Feather name='plus-circle' size={24} color='white' />
         </View>
       </View>
       <ScrollView

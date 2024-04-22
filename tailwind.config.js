@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       colors: {
         background: '#09090a',
+        "border-blue": '#67C6EC'
       },
       fontFamily: {
         regular: 'Inter_400Regular',
