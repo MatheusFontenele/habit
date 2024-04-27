@@ -48,10 +48,10 @@ export default function CreateHabit() {
         </View>
 
         <View className='flex-1'>
-          <Text className="mt-6 text-black text-3xl font-extrabold">
+          <Text className="mt-6 text-white text-3xl font-extrabold">
             Criar hábito
           </Text>
-          <Text className="mt-6 text-black text-xl font-semibold">
+          <Text className="mt-6 text-white text-xl font-semibold">
             Qual é seu comprometimento?
           </Text>
           <InputText 
@@ -59,7 +59,7 @@ export default function CreateHabit() {
             // onChangeText={setHabitName}
             // value={habitName}
           />
-          <Text className="mt-6 text-black text-xl font-semibold">
+          <Text className="mt-6 text-white text-xl font-semibold">
             Em quais dias da semana?
           </Text>
 

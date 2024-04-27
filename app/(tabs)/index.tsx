@@ -50,7 +50,7 @@ export default function TabOneScreen() {
       <View className="px-8 pt-2">
         <Header />
 
-        <View className="flex-row mt-6 mb-1">
+        <View className="flex-row mt-6 mb-1 ">
           {weekDays.map((day, index) => (
             <Text 
               key={`${day}-${index}`} 
@@ -64,9 +64,10 @@ export default function TabOneScreen() {
 
         <ScrollView
           showsVerticalScrollIndicator={false}
+          style={{}}
           className="pt-2"
         >
-          <View className="flex flex-row flex-wrap">
+          <View className="flex flex-row flex-wrap mb-56">
             {daysFromYearStart.map((day) => {
               const daySummaryHabit = summaryHabits?.find((summary) => summary.date === day.toISOString());
               return(
