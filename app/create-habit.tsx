@@ -1,11 +1,11 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { KeyboardAvoidingView, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { useLocalSearchParams } from 'expo-router';
 import { BackButton } from '@/components/elements/back-button';
 import { InputText } from '@/components/elements/input-text';
 import { InputCheckbox } from '@/components/elements/input-checkbox';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 
 const availableWeekDays = [
@@ -24,7 +24,14 @@ export default function CreateHabit() {
   const [habitName, setHabitName] = useState<string>("");
   const params = useLocalSearchParams();
   const { id , other } = params;
-  console.log(id, other)
+  // console.log(id, other)
+
+  const textInputRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    // Quando a view é montada, foca no TextInput
+    textInputRef.current?.focus();
+  }, []);
 
   function handleToggleWeekDay(weekDayIndex: number) {
     if (selectedWeekDays.includes(weekDayIndex)) {
@@ -35,54 +42,41 @@ export default function CreateHabit() {
   }
     
   return (
-    <SafeAreaView>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingBottom: 100,
-          paddingHorizontal: 32,
-        }} 
-      >
-        <View>
-          <BackButton />
-        </View>
-
-        <View className='flex-1'>
-          <Text className="mt-6 text-white text-3xl font-extrabold">
-            Criar hábito
-          </Text>
-          <Text className="mt-6 text-white text-xl font-semibold">
-            Qual é seu comprometimento?
-          </Text>
-          <InputText 
-            placeholder="Nome do hábito"
-            // onChangeText={setHabitName}
-            // value={habitName}
+    <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={34} enabled>
+      <View className='pb-8 bg-zinc-900 rounded-t-2xl pt-4'>
+        <InputText 
+          placeholder="Quest name"
+          // onChangeText={setHabitName}
+          // value={habitName}]
+          className='text-2xl'
+          reference={textInputRef}
+        />
+        <InputText 
+          placeholder="Quest description"
+          // onChangeText={setHabitName}
+          // value={habitName}
+        />
+        {/* {availableWeekDays.map((weekDay) => (
+          <InputCheckbox
+            key={weekDay.value}
+            label={weekDay.label}
+            checked={selectedWeekDays.includes(weekDay.value)}
+            onChange={() => handleToggleWeekDay(weekDay.value)}
           />
-          <Text className="mt-6 text-white text-xl font-semibold">
-            Em quais dias da semana?
-          </Text>
-
-          {availableWeekDays.map((weekDay) => (
-            <InputCheckbox
-              key={weekDay.value}
-              label={weekDay.label}
-              checked={true}
-              onChange={() => handleToggleWeekDay(weekDay.value)}
-            />
-          ))}
-
-          <TouchableOpacity
-            className="mt-6 bg-green-500  py-4 rounded-lg flex-row justify-center items-center"
-            // onPress={handleCreateHabit}
-          >
-            <Feather name="check" size={20} color="white" className="text-center" />
-            <Text className="text-center text-white font-semibold text-lg ml-2">
-              Confirmar
-            </Text>
-          </TouchableOpacity>
+        ))} */}
+        <View className='h-[1px] my-2 bg-zinc-800' />
+        <View className=''>
+            <View>
+              
+            </View>
+            <TouchableOpacity
+              className="mx-4 bg-green-500 w-8 h-8 rounded-lg flex-row justify-center items-center self-end"
+              // onPress={handleCreateHabit} 
+            >
+              <Feather name="check" size={20} color="white" className="text-center" />
+            </TouchableOpacity>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </View>
+    </KeyboardAvoidingView>
   );
 }

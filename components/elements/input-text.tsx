@@ -1,12 +1,18 @@
 import { TextInput, TextInputProps } from "react-native";
 import colors from "tailwindcss/colors";
 
-export function InputText({ placeholder, ...props }: TextInputProps) {
+interface InputTextProps extends TextInputProps {
+  placeholder: string;
+  reference?: React.RefObject<TextInput>;
+}
+
+export function InputText({ placeholder, reference, ...props }: InputTextProps) {
   return (
     <TextInput
-      className="h-12 pl-4 rounded-lg bg-zinc-950 text-white mt-3 focus:border-2 focus:border-violet-700 font-semibold"
+      className="pl-4 mb-2 rounded-lg text-white text-lg font-semibold"
       placeholder={placeholder}
-      placeholderTextColor={colors.zinc[400]}
+      placeholderTextColor={colors.zinc[200]}
+      ref={reference}
       {...props}
     />
   );

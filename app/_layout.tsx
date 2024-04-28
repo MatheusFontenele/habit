@@ -60,6 +60,10 @@ function RootLayoutNav() {
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="create-habit" options={{ presentation: 'modal', contentStyle: {
+          justifyContent: 'flex-end',
+          backgroundColor: 'transparent',
+        }}} />
       </Stack>
     </ThemeProvider>
   );
