@@ -66,9 +66,6 @@ export default function CreateHabit() {
         ))} */}
         <View className='h-[1px] my-2 bg-zinc-800' />
         <View className=''>
-            <View>
-              
-            </View>
             <TouchableOpacity
               className="mx-4 bg-green-500 w-8 h-8 rounded-lg flex-row justify-center items-center self-end"
               // onPress={handleCreateHabit} 
